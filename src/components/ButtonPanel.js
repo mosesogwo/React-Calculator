@@ -41,3 +41,5 @@ class ButtonPanel extends Component {
     )
   }
 }
+
+export default ButtonPanel;
