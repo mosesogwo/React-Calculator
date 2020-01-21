@@ -51,4 +51,4 @@ To get a local copy up and running follow these simple example steps.
 
 ## 📝 License
 
-This project is [MIT](lic.url) licensed.
+This project is [MIT](http://www.tldrlegal.com/license/mit-license) licensed.
