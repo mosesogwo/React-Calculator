@@ -5,7 +5,7 @@ import ButtonPanel from './ButtonPanel';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { result: '0' };
+    this.state = { result: 0 };
   }
 
   render() {
