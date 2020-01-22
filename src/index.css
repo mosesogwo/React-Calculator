@@ -5,7 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: right;
   background: rgb(36, 13, 13);
 }
 
@@ -25,6 +24,8 @@ code {
 }
 
 .display {
+  display: flex;
+  justify-content: flex-end;
   background: gray;
   height: 100px;
   font-size: 70px;
