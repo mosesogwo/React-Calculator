@@ -30,6 +30,8 @@ const calculate = (data, buttonName) => {
   }
 
   if (buttonName === "=") {
-    
+
   }
 }
+
+export default calculate;
