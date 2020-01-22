@@ -5,9 +5,53 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: rgb(36, 13, 13);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App, .buttonPanel {
+  display: flex;
+  flex-direction: column;
+}
+
+.App {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.display {
+  display: flex;
+  justify-content: flex-end;
+  background: gray;
+  height: 100px;
+  font-size: 70px;
+  font-weight: bold;
+  color: white;
+  padding: 5px;
+}
+
+[class*="group"] {
+  display: flex;
+  height: 100px;
+}
+
+.not-wide, .wide {
+  font-size: 1.5rem;
+}
+
+.not-wide {
+  flex-basis: 25%;
+}
+
+.wide {
+  flex-basis: 50%;
+}
+
+.btn-color {
+  background: rgb(231, 126, 64);
+}
+

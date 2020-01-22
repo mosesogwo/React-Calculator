@@ -4,8 +4,8 @@ import Button from './Button';
 
 const ButtonPanel = () => {
   const buttonGroups = [
-    ['AC', '+/-', '%', '/'],
-    ['7', '8', '9', 'X'],
+    ['AC', '+/-', '%', '÷'],
+    ['7', '8', '9', '×'],
     ['4', '5', '6', '-'],
     ['1', '2', '3', '+'],
     ['0', '.', '='],
@@ -13,7 +13,14 @@ const ButtonPanel = () => {
 
   const buttons = buttonGroups.map((buttonGroup, idx) => (
     <div className={`group-${idx}`} key={sha256(buttonGroup.join())}>
-      { buttonGroup.map((buttonName) => (<Button name={buttonName} key={sha256(buttonName)} />)) }
+      { buttonGroup.map((buttonName, idx2) => (
+        <Button
+          name={buttonName}
+          key={sha256(buttonName)}
+          color={idx2 === buttonGroup.length - 1 ? 'btn-color' : 'btn-gray'}
+          wide={buttonName === '0'}
+        />
+      )) }
     </div>
   ));
 
