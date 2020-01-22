@@ -1,11 +1,12 @@
 body {
-  margin: 30px;
+  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: right;
+  background: rgb(36, 13, 13);
 }
 
 code {
@@ -20,6 +21,7 @@ code {
 
 .App {
   width: 700px;
+  margin: 0 auto;
 }
 
 .display {
@@ -41,8 +43,14 @@ code {
 
 .buttonPanel>div>button {
   flex-basis: 25%;
+  font-size: 1.5rem;
 }
 
-#btn-0 {
+#btn-40 {
   flex-basis: 50%;
 }
+
+#btn-03, #btn-13, #btn-23, #btn-33, #btn-42 {
+  background: rgb(231, 126, 64);
+}
+

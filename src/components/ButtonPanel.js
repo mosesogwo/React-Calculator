@@ -13,7 +13,7 @@ const ButtonPanel = () => {
 
   const buttons = buttonGroups.map((buttonGroup, idx) => (
     <div className={`group-${idx}`} key={sha256(buttonGroup.join())}>
-      { buttonGroup.map((buttonName) => (<Button name={buttonName} key={sha256(buttonName) } />)) }
+      { buttonGroup.map((buttonName, idx2) => (<Button name={buttonName} key={sha256(buttonName)} id={ `${idx}${idx2}` } />)) }
     </div>
   ));
 
