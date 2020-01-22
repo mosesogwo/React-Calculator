@@ -33,24 +33,24 @@ code {
   padding: 5px;
 }
 
-.buttonPanel {
-}
-
 [class*="group"] {
   display: flex;
   height: 100px;
 }
 
-.buttonPanel>div>button {
-  flex-basis: 25%;
+.not-wide, .wide {
   font-size: 1.5rem;
 }
 
-#btn-40 {
+.not-wide {
+  flex-basis: 25%;
+}
+
+.wide {
   flex-basis: 50%;
 }
 
-#btn-03, #btn-13, #btn-23, #btn-33, #btn-42 {
+.btn-color {
   background: rgb(231, 126, 64);
 }
 
