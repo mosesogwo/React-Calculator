@@ -11,3 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App, .buttonPanel {
+  display: flex;
+  flex-direction: column;
+}
+
+.App {
+  width: 700px;
+}
+
+.display {
+  /* text-align: right; */
+}
+
+.buttonPanel {
+}
+
+.buttonPanel > div {
+  /* display: flex;
+  background-color: red; */
+}
+
+[class*="group"] {
+  display: flex;
+  background-color: red;
+}
+
+.buttonPanel>div>button {
+  flex-grow: 1;
+}
