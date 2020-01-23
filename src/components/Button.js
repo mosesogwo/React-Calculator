@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({
-  name, color, wide,
-}) => (
-  <button
-    type="button"
-    className={`${color} ${wide ? 'wide' : 'not-wide'}`}
-  >
-    { name }
-  </button>
-);
+const Button = ({name, color, wide, handleClick}) => {
+  return (
+    <button
+      type="button"
+      className={`${color} ${wide ? 'wide' : 'not-wide'}`}
+      onClick = {() => handleClick(name)}
+    >
+      { name }
+    </button>
+  )
+};
 
 Button.defaultProps = {
   color: 'orange',

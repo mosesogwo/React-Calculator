@@ -7,7 +7,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      // result: '0',
       total: null,
       next: null,
       operation: null,
@@ -15,7 +14,7 @@ class App extends Component {
   }
 
   handleClick = (buttonName) => {
-    const data = { 
+    const data = {
       total: this.state.total,
       next: this.state.next,
       operation: this.state.operation
@@ -23,11 +22,11 @@ class App extends Component {
     const newData = calculate(data, buttonName);
     this.setState({
       total: newData.total,
-      next: newData.newNext,
+      next: newData.next,
       operation: newData.operation
     })
+    console.log(newData)
   }
-
 
   render() {
     const result = this.state.next ? this.state.next : this.state.total;
@@ -35,13 +34,13 @@ class App extends Component {
     return (
       <div className="App">
         <Display result = {result}/>
-        <ButtonPanel handleClick = { this.handleClick }/>
+        <ButtonPanel clickHandler = { this.handleClick }/>
       </div>
     );} else {
       return (
         <div className="App">
           <Display />
-          <ButtonPanel handleClick = { this.handleClick }/>
+          <ButtonPanel clickHandler = { (buttonName) => this.handleClick(buttonName) }/>
         </div>
       )
     }
