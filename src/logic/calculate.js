@@ -43,7 +43,7 @@ const calculate = (data, buttonName) => {
     newOperation = null;
   }
 
-  return { newTotal, newNext, newOperation };
+  return { total:newTotal, next:newNext, operation:newOperation };
 };
 
 export default calculate;
