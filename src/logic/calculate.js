@@ -8,13 +8,13 @@ const calculate = (data, buttonName) => {
   let newOperation = operation;
 
   if (
-    buttonName === '+'
+    (buttonName === '+'
     || buttonName === '-'
     || buttonName === '×'
-    || buttonName === '÷'
+    || buttonName === '÷')
   ) {
     newOperation = buttonName;
-    if (newNext) {
+    if (newNext && newTotal) {
       newTotal = operate(newTotal, newNext, newOperation);
       newNext = null;
       newOperation = null;
