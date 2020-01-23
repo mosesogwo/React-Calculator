@@ -19,6 +19,7 @@ class App extends Component {
       next: this.state.next,
       operation: this.state.operation
     }
+    
     const newData = calculate(data, buttonName);
     this.setState({
       total: newData.total,
