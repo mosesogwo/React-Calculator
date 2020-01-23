@@ -1,4 +1,4 @@
-import Big from 'big.js';
+import Big from 'big';
 
 const operate = (numberOne, numberTwo = null, operation) => {
   const bigNumOne = Big(numberOne);
