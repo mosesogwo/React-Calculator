@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Display from './Display';
 import ButtonPanel from './ButtonPanel';
+import '../logic/calculate';
 
 class App extends Component {
   constructor(props) {
