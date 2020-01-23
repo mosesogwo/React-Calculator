@@ -1,49 +1,60 @@
 import operate from './operate';
 
 const calculate = (data, buttonName) => {
-  const { total, next, operation } = data;
+  let { total, next, operation } = data;
+  // let newTotal = total;
+  // let newNext = next;
+  // let newOperation = operation;
 
-  let newTotal = total;
-  let newNext = next;
-  let newOperation = operation;
+  const arithmeticOperators = ["+", "-", "×", "÷"];
+  const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  // AC, +/-, %, =
 
-  if (
-    (buttonName === '+'
-    || buttonName === '-'
-    || buttonName === '×'
-    || buttonName === '÷')
-  ) {
-    newOperation = buttonName;
-    if (newNext && newTotal) {
-      newTotal = operate(newTotal, newNext, newOperation);
-      newNext = null;
-      newOperation = null;
+  if (numbers.includes(buttonName)) {
+    if(next) {
+      next = next + buttonName;
+    } else {
+      next = buttonName;
     }
-  } else if (buttonName === '%') {
-    if (newNext) {
-      newTotal = operate(newNext, '%');
-      newNext = null;
-      newOperation = null;
-    } else if (newTotal) {
-      newTotal = operate(newTotal, '%');
-      newNext = null;
-      newOperation = null;
-    }
-  } else if (buttonName === '+/-') {
-    if (newNext) {
-      newTotal = operate(newNext, -1, '×');
-    } else if (newTotal) {
-      newTotal = operate(newTotal, -1, '×');
-    }
-    newNext = null;
-    newOperation = null;
-  } else if (buttonName === 'AC') {
-    newTotal = null;
-    newNext = null;
-    newOperation = null;
   }
 
-  return { total:newTotal, next:newNext, operation:newOperation };
+  if (arithmeticOperators.includes(buttonName)) {
+    if (!next) {
+      operation = buttonName;
+      total = total ? (operate(total, 0, operation)) : 0;
+    } else { 
+      if(total && !operation) {
+        operation = buttonName;
+        total = operate(total, next, operation);
+        next = null;
+      } else if (total && operation) {
+        total = operate(total, next, operation);
+        operation = buttonName;
+        next = null;
+      } else if(!total) {
+        operation = buttonName;
+        total = next;
+        next = null;
+      }
+    }
+  }
+
+  if (buttonName === "=") {
+    if (next && total && operation) {
+      total = operate(total, next, operation);
+      next = null
+      operation = null;
+    }
+  }
+
+  if (buttonName === "AC") {
+    total = null;
+    next = null;
+    operation = null;
+  }
+
+
+  return { total: total, next: next, operation: operation };
 };
 
 export default calculate;
