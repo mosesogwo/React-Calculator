@@ -14,11 +14,8 @@ class App extends Component {
   }
 
   handleClick = (buttonName) => {
-    const data = {
-      total: this.state.total,
-      next: this.state.next,
-      operation: this.state.operation,
-    };
+    const { total, next, operation } = this.state;
+    const data = { total, next, operation };
 
     const newData = calculate(data, buttonName);
     this.setState({
@@ -29,7 +26,8 @@ class App extends Component {
   }
 
   render() {
-    const result = this.state.next ? this.state.next : this.state.total;
+    const { total, next } = this.state;
+    const result = next || total;
     if (result) {
       return (
         <div className="App">
