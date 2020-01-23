@@ -7,6 +7,9 @@ const calculate = (data, buttonName) => {
 
   if (numbers.includes(buttonName)) {
     if (next) {
+      if (next === '0' && buttonName === '0') {
+        return false;
+      }
       next += buttonName;
     } else {
       next = buttonName;
