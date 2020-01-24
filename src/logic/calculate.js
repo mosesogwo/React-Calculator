@@ -5,24 +5,24 @@ const calculate = (data, buttonName) => {
   const arithmeticOperators = ['+', '-', '×', '÷'];
   const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-  // const afterDivideByZero = () => {
-  //   if (total === "Can't divide by 0") {
-  //     next = 0;
-  //     operation = 0
-  //     total = 0
-  //   }
-  // }
+  const afterDivideByZero = () => {
+    if (total === "Can't divide by 0") {
+      next = 0;
+      operation = 0;
+      total = 0;
+    }
+  };
 
   if (numbers.includes(buttonName)) {
-    // afterDivideByZero()
+    afterDivideByZero();
     if (next) {
       if (next === '0' && buttonName === '0') {
         return false;
       }
       next += buttonName;
     } else {
-      if(total && !operation) {
-        total = null
+      if (total && !operation) {
+        total = null;
         next = buttonName;
       }
       next = buttonName;
@@ -30,7 +30,7 @@ const calculate = (data, buttonName) => {
   }
 
   if (arithmeticOperators.includes(buttonName)) {
-    // afterDivideByZero()
+    afterDivideByZero();
     if (!next) {
       operation = buttonName;
       if (!total) {
@@ -52,7 +52,7 @@ const calculate = (data, buttonName) => {
   }
 
   if (buttonName === '=') {
-    // afterDivideByZero()
+    afterDivideByZero();
     if (next && total && operation) {
       total = operate(total, next, operation);
       next = null;
@@ -67,7 +67,7 @@ const calculate = (data, buttonName) => {
   }
 
   if (buttonName === '%') {
-    // afterDivideByZero()
+    afterDivideByZero();
     if (total) {
       if (next) {
         next = operate(next, null, buttonName);
@@ -80,7 +80,7 @@ const calculate = (data, buttonName) => {
   }
 
   if (buttonName === '.') {
-    // afterDivideByZero()
+    afterDivideByZero();
     if (next && !next.includes('.')) {
       next += '.';
     } else if (total && !total.includes('.')) {
@@ -92,7 +92,7 @@ const calculate = (data, buttonName) => {
   }
 
   if (buttonName === '+/-') {
-    // afterDivideByZero()
+    afterDivideByZero();
     if (next) {
       next = operate(next, -1, '×');
     } else if (total) {

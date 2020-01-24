@@ -23,7 +23,6 @@ class App extends Component {
       next: newData.next,
       operation: newData.operation,
     });
-    console.log(this.state)
   }
 
   render() {
