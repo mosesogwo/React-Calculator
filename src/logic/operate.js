@@ -4,12 +4,15 @@ const operate = (numberOne, numberTwo, operation) => {
   const bigNumOne = numberOne ? Big(numberOne) : null;
   const bigNumTwo = numberTwo ? Big(numberTwo) : null;
   if (operation === '+') {
-    // console.log(Big(numberOne + numberTwo));
     return (bigNumOne.plus(bigNumTwo).toString());
   } if (operation === '-') {
     return (bigNumOne.minus(bigNumTwo).toString());
   } if (operation === '÷') {
-    return (bigNumOne.div(bigNumTwo).toString());
+    try {
+      bigNumOne.div(bigNumTwo)
+      return (bigNumOne.div(bigNumTwo).toString());
+    }
+    catch (err) { return "Can't divide by 0" }
   } if (operation === '×') {
     return (bigNumOne.times(bigNumTwo).toString());
   } if (operation === '%') {
