@@ -34,10 +34,6 @@ To get a local copy up and running follow these simple example steps.
 - If all goes well, App will open in your browser.
 
 
-### Usage
-
-
-
 ## Author
 
 👤 **Moses Ogwo**

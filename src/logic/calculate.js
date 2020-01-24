@@ -1,49 +1,108 @@
 import operate from './operate';
 
 const calculate = (data, buttonName) => {
-  const { total, next, operation } = data;
+  let { total, next, operation } = data;
+  const arithmeticOperators = ['+', '-', '×', '÷'];
+  const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-  let newTotal = total;
-  let newNext = next;
-  let newOperation = operation;
+  const afterDivideByZero = () => {
+    if (total === "Can't divide by 0") {
+      next = 0;
+      operation = 0;
+      total = 0;
+    }
+  };
 
-  if (
-    (buttonName === '+'
-    || buttonName === '-'
-    || buttonName === '×'
-    || buttonName === '÷')
-  ) {
-    newOperation = buttonName;
-    if (newNext && newTotal) {
-      newTotal = operate(newTotal, newNext, newOperation);
-      newNext = null;
-      newOperation = null;
+  if (numbers.includes(buttonName)) {
+    afterDivideByZero();
+    if (next) {
+      if (next === '0' && buttonName === '0') {
+        return false;
+      }
+      next += buttonName;
+    } else {
+      if (total && !operation) {
+        total = null;
+        next = buttonName;
+      }
+      next = buttonName;
     }
-  } else if (buttonName === '%') {
-    if (newNext) {
-      newTotal = operate(newNext, '%');
-      newNext = null;
-      newOperation = null;
-    } else if (newTotal) {
-      newTotal = operate(newTotal, '%');
-      newNext = null;
-      newOperation = null;
-    }
-  } else if (buttonName === '+/-') {
-    if (newNext) {
-      newTotal = operate(newNext, -1, '×');
-    } else if (newTotal) {
-      newTotal = operate(newTotal, -1, '×');
-    }
-    newNext = null;
-    newOperation = null;
-  } else if (buttonName === 'AC') {
-    newTotal = null;
-    newNext = null;
-    newOperation = null;
   }
 
-  return { newTotal, newNext, newOperation };
+  if (arithmeticOperators.includes(buttonName)) {
+    afterDivideByZero();
+    if (!next) {
+      operation = buttonName;
+      if (!total) {
+        total = '0';
+      }
+    } else if (total && !operation) {
+      operation = buttonName;
+      total = operate(total, next, operation);
+      next = null;
+    } else if (total && operation) {
+      total = operate(total, next, operation);
+      operation = buttonName;
+      next = null;
+    } else if (!total) {
+      operation = buttonName;
+      total = next;
+      next = null;
+    }
+  }
+
+  if (buttonName === '=') {
+    afterDivideByZero();
+    if (next && total && operation) {
+      total = operate(total, next, operation);
+      next = null;
+      operation = null;
+    }
+  }
+
+  if (buttonName === 'AC') {
+    total = null;
+    next = null;
+    operation = null;
+  }
+
+  if (buttonName === '%') {
+    afterDivideByZero();
+    if (total) {
+      if (next) {
+        next = operate(next, null, buttonName);
+      } else {
+        total = operate(total, null, buttonName);
+      }
+    } else if (next) {
+      next = operate(next, null, buttonName);
+    }
+  }
+
+  if (buttonName === '.') {
+    afterDivideByZero();
+    if (next && !next.includes('.')) {
+      next += '.';
+    } else if (total && !total.includes('.')) {
+      next = `${total}.`;
+      total = null;
+    } else if (!total && !next) {
+      next = '0.';
+    }
+  }
+
+  if (buttonName === '+/-') {
+    afterDivideByZero();
+    if (next) {
+      next = operate(next, -1, '×');
+    } else if (total) {
+      next = operate(total, -1, '×');
+      total = null;
+    }
+  }
+
+
+  return { total, next, operation };
 };
 
 export default calculate;
