@@ -2,7 +2,7 @@
 
 > This is a Calculator App built for Maths Magicians Inc.
 
-![](app-screenshot.png)
+![](2020-03-16-15-50-10.png)
 
 This calculator can perform the basic math operations - Addition, Subtraction, Multiplication and Division. 
 

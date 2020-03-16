@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: rgb(36, 13, 13);
+  background: rgb(3, 92, 114);
 }
 
 code {
@@ -53,6 +53,9 @@ code {
 }
 
 .btn-color {
-  background: rgb(231, 126, 64);
+  /* background: rgb(231, 126, 64); */
+
+  background: rgb(2, 151, 177);
+  color: white;
 }
 
